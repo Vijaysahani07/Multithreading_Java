@@ -17,9 +17,7 @@ class BankAccount {
         + " and Your current amount is: " + balance);
 
     // Implementing sleep() Thread to wait a second while depositing the Money
-    try
-
-    {
+    try{
       Thread.sleep(1000);
     } catch (InterruptedException e) {
       e.printStackTrace();
@@ -32,11 +30,21 @@ class BankAccount {
 
   // Withdrwing the Money
   public synchronized void withdraw(int amount) {
+
+    System.out.println(Thread.currentThread().getName() + "Withdrawan amount is: " + amount + " and Your Current Balance is: " + balance );
+
+    try{
+      Thread.sleep(1000);
+    }catch(InterreuptedException e){
+      e.printStackTrace();
+    }
+    
     if (balance >= amount) {
       balance -= amount;
-      System.out.println("You have withdrwan: " + amount + " and Your Current amount is: " + balance);
+      System.out.println(Thread.currentThread().getName() + " You have withdrwan: " + amount + " and Your Current amount is: " + balance);
+      
     } else {
-      System.out.println("You don't have sufficient Money, You are withdrawing: " + amount
+      System.out.println(Thread.currentThread.getName() + " You don't have sufficient Money, You are withdrawing: " + amount
           + "  and your Current balance is: " + balance);
     }
   }
